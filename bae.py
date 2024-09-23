@@ -24,12 +24,12 @@ def get_compositions_table(filepath):
 
 
 def normalize(row: pandas.Series):
-    cleaned_row = row.map(lambda s: pandas.to_numeric(s, errors="coerce"))
-    print(cleaned_row)
-    total_comp_without_Na = 1000000 - cleaned_row.loc["Na2O PIGE"]
+    cleaned_row = row.map(lambda s: pandas.to_numeric(s, downcast='integer', errors="coerce"))
+    sodium_pige = cleaned_row.loc["Na2O PIGE"]
+    total_comp_without_Na = 1000000 - sodium_pige
     row_without_Na = cleaned_row.drop("Na2O PIGE")
     sum_comp_without_Na = row_without_Na.sum()
-    return row_without_Na.map(lambda x: x * total_comp_without_Na / sum_comp_without_Na)
+    return pandas.concat([pandas.Series(sodium_pige, index=["Na2O PIGE"]), row_without_Na.map(lambda x: x * total_comp_without_Na / sum_comp_without_Na)])
 
 
 def main():
