@@ -1,6 +1,6 @@
 # lemonegg
 
-Set of jupyter notebooks to facilitate the processing of data acquired with C2RMF (Centre de recherche et de restauration des musées de France) equipment:
+Set of jupyter notebooks to facilitate the processing of data acquired with C2RMF (Centre de recherche et de restauration des musées de France) equipments:
 
 - AGLAE: Grand Louvre accelerator for elemental analysis
 
